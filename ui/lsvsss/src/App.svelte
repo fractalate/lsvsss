@@ -66,7 +66,7 @@
 <main>
   <h1>What is this?</h1>
 
-  <div style={"height: " + width + "cm; background: black; width: 100vh;"}>
+  <div style={"height: " + width + "cm; background: black; width: calc(100vw - 7rem);"}>
     &nbsp;
   </div>
 
