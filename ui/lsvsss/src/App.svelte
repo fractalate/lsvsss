@@ -1,10 +1,15 @@
 <script lang="ts">
   const uuid = loadUUID();
-  const width = Math.random();
+  const width = randomFromZeroToJustBeforeOne();
+
+  function randomFromZeroToJustBeforeOne() {
+    const result = Math.random();
+    return result == 0 ? 1 : result;
+  }
 
   type Category = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
 
-  let done = false;
+  let working = false;
 
   function loadUUID() {
     let uuid = localStorage.getItem('uuid');
@@ -23,43 +28,49 @@
   }
   
   const thisIsALine = async () => {
-    if (done) return;
+    if (working) return;
+    working = true;
     const classification = 'L';
-    await fetch('https://lvs.cochleoid.com/vote', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        uuid,
-        category: widthToCategory(width),
-        classification,
-      }),
-    })
-    done = true;
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    try {
+      await fetch('https://lvs.cochleoid.com/vote', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uuid,
+          category: widthToCategory(width),
+          classification,
+        }),
+      })
+    } finally {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 
   const thisIsAStrip = async () => {
-    if (done) return;
+    if (working) return;
+    working = true;
     const classification = 'S';
-    await fetch('https://lvs.cochleoid.com/vote', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        uuid,
-        category: widthToCategory(width),
-        classification,
-      }),
-    })
-    done = true;
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    try {
+      await fetch('https://lvs.cochleoid.com/vote', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uuid,
+          category: widthToCategory(width),
+          classification,
+        }),
+      })
+    } finally {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 </script>
 
