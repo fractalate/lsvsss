@@ -19,7 +19,7 @@ function calculateHash(value, attempt) {
   const fileNumber = raw[0];
   // TODO: Make this mask in terms of the constants defined at the top.
   const bitNumber = 0x1FFFFF & (
-    (raw[1]) | (raw[2] << 8) | (raw[3] << 8)
+    (raw[1]) | (raw[2] << 8) | (raw[3] << 16)
   );
   return [fileNumber, bitNumber];
 }
