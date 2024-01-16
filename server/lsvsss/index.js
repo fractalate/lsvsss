@@ -37,6 +37,6 @@ app.post('/vote', (req, res, next) => {
   res.end();
 });
 
-app.listen(3000, () => {
+app.listen(3000, '127.0.0.1', () => {
   console.log('listening on 3000');
 });
