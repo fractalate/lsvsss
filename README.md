@@ -5,4 +5,4 @@ A quick little web page and server to collect anonymous votes in a constant amou
 * What do people think about varying thicknesses of lines/strips?
 * Where does the word we use turn from "line" to "strip"?
 
-Cast your vote today: [Lines vs. Strips](https://lsvsss.cochleoid.com/).
+Cast your vote today: [Lines vs. Strips](https://lvs.cochleoid.com/).
