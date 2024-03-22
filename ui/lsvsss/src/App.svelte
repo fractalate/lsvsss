@@ -10,6 +10,7 @@
   type Category = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
 
   let working = false;
+  let thanks = false;
 
   function loadUUID() {
     let uuid = localStorage.getItem('uuid');
@@ -44,9 +45,10 @@
         }),
       })
     } finally {
+      thanks = true;
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 2000);
     }
   };
 
@@ -67,9 +69,10 @@
         }),
       })
     } finally {
+      thanks = true;
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 2000);
     }
   };
 </script>
@@ -82,7 +85,11 @@
   </div>
 
   <div class="card">
-    <button on:click={thisIsALine}>This is a line.</button>
-    <button on:click={thisIsAStrip}>This is a strip.</button>
+    {#if thanks}
+      <button disabled>Thanks!</button>
+    {:else}
+      <button on:click={thisIsALine}>This is a line.</button>
+      <button on:click={thisIsAStrip}>This is a strip.</button>
+    {/if}
   </div>
 </main>
